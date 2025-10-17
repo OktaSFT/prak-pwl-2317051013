@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Matakuliah extends Model
 {
@@ -20,7 +21,7 @@ class Matakuliah extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (empty($model->{$model->getKeyName()})) {
+            if (empty($model->getKeyName())) {
                 $model->{$model->getKeyName()} = (string) Str::uuid();
             }
         });
